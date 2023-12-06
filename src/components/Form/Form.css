@@ -1,0 +1,33 @@
+.form-container{
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items:center;
+    flex-direction:column;
+    justify-content:center
+}
+
+.form{
+    display: flex;
+}
+
+.model-container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.button-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px
+}
+
+.button{
+  border-radius: 5px;
+  color:blueviolet;
+  background-color:whitesmoke;
+  padding: 10px;
+
+}
