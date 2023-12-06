@@ -36,7 +36,7 @@ const App: React.FC = () => {
     <div className="App-header">
       <h1 style={{ color: '#718096' }}>Create Prisma Models</h1>
       <div className="container">
-        <Form addPrismaModel={addPrismaModel} />
+        <Form addPrismaModel={addPrismaModel} availableModels={prismaModels.map((model) => model.name)}/>
         <PrismaViewer prismaModels={prismaModels} />
       </div>
     </div>

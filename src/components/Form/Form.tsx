@@ -28,6 +28,7 @@ enum FieldType {
 
 interface FormProps {
   addPrismaModel: (model: PrismaModel) => void
+  availableModels: string[]
 }
 
 interface PrismaModel {
@@ -40,7 +41,7 @@ interface PrismaModel {
   }[]
 }
 
-const Form: React.FC<FormProps> = ({ addPrismaModel }) => {
+const Form: React.FC<FormProps> = ({ addPrismaModel, availableModels }) => {
   const { register, handleSubmit, setValue, watch, reset } = useForm<FormData>({
     defaultValues: { models: [] },
   })
@@ -107,10 +108,12 @@ const Form: React.FC<FormProps> = ({ addPrismaModel }) => {
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         {models.map((model, modelIndex) => (
           <div key={modelIndex} className="model-container">
-            <label style={{ color: '#1a202c', padding: '10px', fontSize:'16px' }}>
+            <label
+              style={{ color: '#1a202c', padding: '10px', fontSize: '16px' }}
+            >
               Model Name:
               <input
-              className='input'
+                className="input"
                 {...register(`models.${modelIndex}.name` as const)}
                 type="text"
                 placeholder={`Model ${modelIndex + 1}`}
@@ -139,7 +142,7 @@ const Form: React.FC<FormProps> = ({ addPrismaModel }) => {
                   <label style={{ color: '#1a202c' }}>
                     Field Name:
                     <input
-                    className='input'
+                      className="input"
                       {...register(
                         `models.${modelIndex}.fields.${fieldIndex}.name` as const,
                       )}
@@ -150,7 +153,7 @@ const Form: React.FC<FormProps> = ({ addPrismaModel }) => {
                   <label style={{ color: '#1a202c', padding: '10px' }}>
                     Field Type:
                     <select
-                    className='input'
+                      className="input"
                       {...register(
                         `models.${modelIndex}.fields.${fieldIndex}.type` as const,
                       )}
@@ -161,12 +164,18 @@ const Form: React.FC<FormProps> = ({ addPrismaModel }) => {
                           {type}
                         </option>
                       ))}
+                      {availableModels.map((modelName) => (
+                       <React.Fragment key={modelName}>
+                       <option value={`${modelName}`}>{`${modelName}`}</option>
+                       <option value={`[${modelName}]`}>{`${modelName}[]`}</option>
+                     </React.Fragment>
+                      ))}
                     </select>
                   </label>
                   <label style={{ color: '#1a202c' }}>
                     Relations:
                     <input
-                    className='input'
+                      className="input"
                       {...register(
                         `models.${modelIndex}.fields.${fieldIndex}.metadata` as const,
                       )}
