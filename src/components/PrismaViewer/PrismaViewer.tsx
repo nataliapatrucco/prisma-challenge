@@ -17,58 +17,22 @@ interface PrismaModel {
 
 const PrismaViewer: React.FC<PrismaViewerProps> = ({ prismaModels }) => {
   return (
-    <div className="container">
+    <div className="Container">
       {prismaModels.map((model, index) => (
         <div key={index} style={{ marginBottom: '20px' }}>
           <h4 style={{ color: '#805ad5' }}>{`${model.name} {`}</h4>
           <table style={{ width: '100%' }}>
             <tbody>
               <tr key="id">
-                <td
-                  style={{ width: '150px', color: '#1a202c', fontSize: '20px' }}
-                >
-                  id
-                </td>
-                <td
-                  style={{ width: '100px', color: '#805ad5', fontSize: '20px' }}
-                >
-                  Int
-                </td>
-                <td
-                  style={{ width: '200px', color: '#319795', fontSize: '20px' }}
-                >
-                  {'@default'}
-                </td>
+                <td className="Name-field">id</td>
+                <td className="Type-field">Int</td>
+                <td className="Metadata-field">{'@default'}</td>
               </tr>
               {model.fields.map((field, fieldIndex) => (
                 <tr key={fieldIndex}>
-                  <td
-                    style={{
-                      width: '150px',
-                      color: '#1a202c',
-                      fontSize: '20px',
-                    }}
-                  >
-                    {field.name}
-                  </td>
-                  <td
-                    style={{
-                      width: '100px',
-                      color: '#805ad5',
-                      fontSize: '20px',
-                    }}
-                  >
-                    {field.type}
-                  </td>
-                  <td
-                    style={{
-                      width: '200px',
-                      color: '#319795',
-                      fontSize: '20px',
-                    }}
-                  >
-                    {field.type}
-                  </td>
+                  <td className="Name-field">{field.name}</td>
+                  <td className="Type-field">{field.type}</td>
+                  <td className="Metadata-field">{field.metadata}</td>
                 </tr>
               ))}
             </tbody>

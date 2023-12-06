@@ -35,19 +35,12 @@ const App: React.FC = () => {
   return (
     <div className="App-header">
       <h1 style={{ color: '#718096' }}>Create Prisma Models</h1>
-      <div
-        style={{
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-        }}
-      >
+      <div className="container">
         <Form addPrismaModel={addPrismaModel} />
         <PrismaViewer prismaModels={prismaModels} />
       </div>
     </div>
-  )
+  );
 }
 
 export default App

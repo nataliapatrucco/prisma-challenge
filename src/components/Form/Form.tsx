@@ -107,9 +107,10 @@ const Form: React.FC<FormProps> = ({ addPrismaModel }) => {
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         {models.map((model, modelIndex) => (
           <div key={modelIndex} className="model-container">
-            <label style={{ color: '#1a202c', padding: '10px' }}>
+            <label style={{ color: '#1a202c', padding: '10px', fontSize:'16px' }}>
               Model Name:
               <input
+              className='input'
                 {...register(`models.${modelIndex}.name` as const)}
                 type="text"
                 placeholder={`Model ${modelIndex + 1}`}
@@ -138,6 +139,7 @@ const Form: React.FC<FormProps> = ({ addPrismaModel }) => {
                   <label style={{ color: '#1a202c' }}>
                     Field Name:
                     <input
+                    className='input'
                       {...register(
                         `models.${modelIndex}.fields.${fieldIndex}.name` as const,
                       )}
@@ -148,6 +150,7 @@ const Form: React.FC<FormProps> = ({ addPrismaModel }) => {
                   <label style={{ color: '#1a202c', padding: '10px' }}>
                     Field Type:
                     <select
+                    className='input'
                       {...register(
                         `models.${modelIndex}.fields.${fieldIndex}.type` as const,
                       )}
@@ -160,8 +163,19 @@ const Form: React.FC<FormProps> = ({ addPrismaModel }) => {
                       ))}
                     </select>
                   </label>
+                  <label style={{ color: '#1a202c' }}>
+                    Relations:
+                    <input
+                    className='input'
+                      {...register(
+                        `models.${modelIndex}.fields.${fieldIndex}.metadata` as const,
+                      )}
+                      type="text"
+                      placeholder={`@default / Model[]`}
+                    />
+                  </label>
                   <button
-                    style={{ padding: '5px', margin: '10px' }}
+                    style={{ marginLeft: '10px' }}
                     className="button"
                     type="button"
                     onClick={() => removeField(modelIndex, fieldIndex)}

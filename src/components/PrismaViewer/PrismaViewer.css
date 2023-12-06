@@ -1,8 +1,26 @@
-.container {
+.Container {
   width: 100%;
   display: flex;
   align-content: center;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+}
+
+.Name-field {
+  width: 150px;
+  color: #1a202c;
+  font-size: 20px;
+}
+
+.Type-field {
+  width: 100px;
+  color: #805ad5;
+  font-size: 20px;
+}
+
+.Metadata-field {
+  width: 200px;
+  color: #319795;
+  font-size: 20px;
 }
