@@ -20,13 +20,13 @@ const PrismaViewer: React.FC<PrismaViewerProps> = ({ prismaModels }) => {
     <div className="Container">
       {prismaModels.map((model, index) => (
         <div key={index} style={{ marginBottom: '20px' }}>
-          <h4 style={{ color: '#805ad5' }}>{`${model.name} {`}</h4>
+          <h5 style={{ color: '#805ad5' }}><span style={{ color: '#d5408c' }}>model </span>{`${model.name} {`}</h5>
           <table style={{ width: '100%' }}>
             <tbody>
               <tr key="id">
                 <td className="Name-field">id</td>
                 <td className="Type-field">Int</td>
-                <td className="Metadata-field">{'@default'}</td>
+                <td className="Metadata-field">{'@id @default(autoincrement())'}</td>
               </tr>
               {model.fields.map((field, fieldIndex) => (
                 <tr key={fieldIndex}>

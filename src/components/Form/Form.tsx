@@ -180,7 +180,7 @@ const Form: React.FC<FormProps> = ({ addPrismaModel, availableModels }) => {
                         `models.${modelIndex}.fields.${fieldIndex}.metadata` as const,
                       )}
                       type="text"
-                      placeholder={`@default / Model[]`}
+                      placeholder={`@default / @relation`}
                     />
                   </label>
                   <button
